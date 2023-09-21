@@ -9,6 +9,9 @@
 .paragraph {
   background-color: rgb(219, 219, 40);
   padding: .1rem 0rem ;
+  width: fit-content;
+  margin: 0 25% 0 25%;
+  color: #fff;
 }
 
 .formdiv {
@@ -20,6 +23,7 @@
 input {
   margin: .3rem 0;
 }
+
 
 .btn {
   padding: .5rem 0;

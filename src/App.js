@@ -14,8 +14,8 @@ function App() {
       <Routes>
        <Route path='/creatUsers' element={<Landing/>}/>
        <Route path="/createexercise" element={<Createusers/>}/>
-       <Route path="/" element={<Createexercise/>}/>
-       <Route path="/exerliselist" element={<Exerciselist/>}/>
+       <Route path="/exerliselist" element={<Createexercise/>}/>
+       <Route path="/" element={<Exerciselist/>}/>
     </Routes>
     </BrowserRouter>
     </div>

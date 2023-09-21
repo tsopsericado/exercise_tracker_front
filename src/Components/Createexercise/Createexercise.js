@@ -41,8 +41,8 @@ function Createexercise() {
   return (
     <div className="exercise_container">
       <form onSubmit={handleSubmit} className="form">
-        <h2>Add exercise</h2>
-        <p className="paragraph"> POST/user/:id</p>
+        <h2>Add exercises</h2>
+        <p className="paragraph">POST /api/users/:_id/exercises</p>
         <div className="formdiv">
           <input
             type="text"
