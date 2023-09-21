@@ -7,9 +7,12 @@
 .components{
   display: flex;
   gap: 10px;
-  margin-left: 25%;
 }
 
 span {
   background-color: rgb(219, 219, 40);
+}
+
+.paragraphs p {
+  font-size: 18px;
 }
