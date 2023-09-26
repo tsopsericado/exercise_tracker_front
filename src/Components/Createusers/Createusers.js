@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Createusers.css";
+import { useNavigate } from "react-router-dom";
 
 function Createusers() {
-  const [username, setUsername] = useState("");
+  const [users, setUsers] = useState({
+    username: "",
+  })
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let sampledata = null
 
     // Call the API to save the username to MongoDB
     try {
-      await axios.post("http://localhost:5000/api/users", { username });
+      await axios.post("http://localhost:3000/api/users", { users });
       console.log("Username saved succesfully!");
 
       //Reset the form after form submission
 
-      setUsername("");
+      setUsers("");
     } catch (error) {
       console.error("Error saving username:", error);
     }
@@ -29,9 +34,9 @@ function Createusers() {
         <div className="inp">
           <input
             type="text"
-            value={username}
+            value={users}
             placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsers(e.target.value)}
           />
           <button type="submit" className="btn_sub">submit</button>
         </div>

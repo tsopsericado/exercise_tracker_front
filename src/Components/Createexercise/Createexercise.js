@@ -1,34 +1,41 @@
 import React, { useState } from "react";
 import './Createexercise.css';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Createexercise() {
   const [userId, setUserId] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const [date, setDate] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let sampledata = null;
 
     // Send the form data to your backend API to store in MongoDB
     // You can use libraries like Axios or fetch to make the API call
 
     // Example using Axios:
     axios
-      .post("/api/your-endpoint", {
+      .post(`http://localhost:3000/api/users/${userId}/exercises`, {
         userId,
         description,
         duration,
         date,
       })
+        // Handle success response
       .then((response) => {
         console.log(response.data);
-        // Handle success response
+        console.log("sampledata", sampledata)
+        localStorage.setItem("addExercise", JSON.stringify(sampledata))
+        console.log("response", response.data);
       })
-      .catch((error) => {
-        console.error(error);
         // Handle error response
+      .catch((error) => {
+        console.error("an error occured", error);
+        navigate(`.api/user/${userId}/exercises`);
       });
 
     // Reset the form fields after submission
