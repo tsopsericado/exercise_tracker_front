@@ -25,7 +25,7 @@ function Createexercise() {
         duration,
         date,
       })
-        // Handle success response
+      
       .then((response) => {
         console.log(response.data);
         console.log("sampledata", sampledata)

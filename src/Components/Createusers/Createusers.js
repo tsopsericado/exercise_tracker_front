@@ -6,24 +6,27 @@ import { useNavigate } from "react-router-dom";
 function Createusers() {
   const [users, setUsers] = useState({
     username: "",
-  })
+  });
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let sampledata = null
+    let sampledata = null;
 
     // Call the API to save the username to MongoDB
-    try {
-      await axios.post("http://localhost:3000/api/users", { users });
-      console.log("Username saved succesfully!");
 
-      //Reset the form after form submission
+    axios
+      .post("http://localhost:3000/api/users", { users })
+      .then((response) => {
+        sampledata = response.data;
+        localStorage.setItem("exerciseUser", JSON.stringify(sampledata));
+        navigate("./api/users");
+        console.log("Username saved succesfully!");
+    //Reset the form after form submission
+        setUsers("");
+      })
+      .catch((error) => console.log("Issues saving username", error));
 
-      setUsers("");
-    } catch (error) {
-      console.error("Error saving username:", error);
-    }
   };
 
   return (
@@ -38,7 +41,9 @@ function Createusers() {
             placeholder="Username"
             onChange={(e) => setUsers(e.target.value)}
           />
-          <button type="submit" className="btn_sub">submit</button>
+          <button type="submit" className="btn_sub">
+            submit
+          </button>
         </div>
       </form>
     </div>
